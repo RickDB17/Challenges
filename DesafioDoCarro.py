@@ -19,9 +19,6 @@ meuFusca.andar(100);            # anda 100 quilômetros.
 meuFusca.obterGasolina()        # Imprime o combustível que resta no tanque.
 """
 """
-carro = ""
-emoji = ""
-consumo = ""
 
 def iniciar():
     print("Bem-vindo ao simulador de consumo de combustível!")
@@ -71,14 +68,4 @@ class Carro():
 print("Esse é o seu carro, 🚗")
 
 Carro.variáveis()
-game()
-
-
-        
-
-"""
-Abstração:
-
-Consumo = Quilômetros/litro
-litragem == Quilômetros/Consumo
-"""
+game()   
