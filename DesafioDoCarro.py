@@ -18,54 +18,42 @@ meuFusca.adicionarGasolina(20); # abastece com 20 litros de combustível.
 meuFusca.andar(100);            # anda 100 quilômetros.
 meuFusca.obterGasolina()        # Imprime o combustível que resta no tanque.
 """
-"""
 
-def iniciar():
-    print("Bem-vindo ao simulador de consumo de combustível!")
-    print("Vrum, vrum! 🚘")
-    carro = input("Diga qual o modelo de seu carro!\n»»» ")
-    emoji = int(input("Escolha um emoji para ele, escolha com um número:\n\
-1.🚘\t2.🚗\t3.🚕\n\
-4.🚙\t5.🏎️\t  6.🚓\n\
-7.🚚\t8.🚛\t9.🚔\n\
-10.🚖\t11.🚍\n\
-»»»» "))
-    consumo = int(input("Quantos Quilômetros por litro o seu carro consome? (Apenas número)\n»»» "))
+name = input("Diga o modelo do seu carro:\n»»» ")
+tank = input("Diga o volume atual de combustível:\n»»» ")
+consume = input("Diga o consumo de litros por quilômetro de seu automóvel:\n»»» ")
 
-iniciar()
-"""
+class Carro:
+    def __init__(self, name, tank, consume):
+        self.nome = name
+        self.tanque = tank
+        self.consumo = consume
+
+    def obterGasolina(self):
+        print(self.tanque)
+
+    def adicionarGasolina(self):
+        gasolina = int(input("Quantos litros você deseja adicionar?\n»»» "))
+        self.tanque = self.tanque + gasolina
+        print(f"Foi adicionado {gasolina} ao seu tanque, que agora apresenta {self.tanque}.")
+
+    def andar(self):
+        distancia = int(input("Quantos quilômetros você deseja andar?\n»»» "))
+        self.tanque = self.tanque - (distancia/self.consumo)
+        print(f"Você andou {distancia}, tanque atual: {self.tanque}.")
+
 def game():
-    op = int(input("Escolhas uma das opções abaixo:\n1.Encher tanque\n2.Verificar Tanque\n3. Andar x Km."))
-
-    if op == 1:
-        i = int(input("Quantos litros você deseja encher?"))
-        Carro.adicionarGasolina(i)
-    elif op == 2:
-        Carro.obterGasolina()
-    elif op == 3:
-        q = int(input("Quandos quilômetros você deseja andar?"))
-        Carro.andar(q)
-    else:
-        print("Digite: 1, 2 ou 3! >:(")
+    a = int(input("1. Ver tanque\t|2. Encher tanque\t|3. Andar"))
+    if a == 1:
+        car.obterGasolina()
         game()
+    elif a == 2:
+        car.adicionarGasolina()
+        game()
+    elif a == 3: 
+        car.andar()
+        game()
+    
 
-class Carro():
-
-    def variáveis():
-        name = input("Qual o nome do seu carro?\n»»» ")
-        consumo = int(input("Quantos quilômetros por litro o seu carro faz\n»»» "))
-        gasolina = int(input("Qual o tamanho do tanque? (Em litros)\n»»» "))
-
-    def obterGasolina():
-        print(gasolina)
-
-    def adicionarGasolina(litros):
-        gasolina = gasolina + litros
-
-    def andar(distância):
-        gasolina = gasolina - (distância/consumo)
-
-print("Esse é o seu carro, 🚗")
-
-Carro.variáveis()
-game()   
+car = Carro(name, tank, consume)
+game()
